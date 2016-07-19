@@ -3,6 +3,7 @@ from django.core.management.base import CommandError
 from django.conf import settings
 from django.db import connections
 from django.db import models
+from django.apps import apps
 
 def get_broken_sequence_info(sequence_info):
     """filter info for broken tables"""
@@ -40,7 +41,7 @@ def get_table_names(options):
     if options['tables']:
         return parse_table_names(options['tables'])
     else:
-        return map(lambda v: v._meta.db_table, models.get_models())
+        return map(lambda v: v._meta.db_table, apps.get_models())
 
 def print_info(sequence_info):
     """prints out the sequence data"""
