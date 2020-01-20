@@ -5,6 +5,12 @@ This update works on Django version 2.2 and Python 3.
 Fixes sequences in postgresql to help prevent the 
 duplicate primary key errors.
 
+To install:
+
+    Go inside folder, where setup.py is located
+    Run: pip install .
+    In your settings.py file, add 'postgresql_sequence_utils' to INSTALLED_APPS
+
 The command needs to be run with all other connections to the database
 closed, so that there is no competition for the access to the sequences.
 
