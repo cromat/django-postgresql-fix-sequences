@@ -2,8 +2,8 @@
 from django.core.management.base import CommandError
 from django.conf import settings
 from django.db import connections
-from django.db import models
 from django.apps import apps
+
 
 def get_broken_sequence_info(sequence_info):
     """filter info for broken tables"""
@@ -43,17 +43,19 @@ def get_table_names(options):
     else:
         return map(lambda v: v._meta.db_table, apps.get_models())
 
+
 def print_info(sequence_info):
     """prints out the sequence data"""
     format_str = "%-10s%-10s%-10s %s"
-    print format_str % ('Current', 'Maximum', 'Increment', 'Table name')
+    print(format_str % ('Current', 'Maximum', 'Increment', 'Table name'))
     for table, info in sequence_info.items():
-        print format_str % (
+        print(format_str % (
                     info['current_value'],
                     info['max_value'],
                     info['increment'],
                     table
-                )
+                ))
+
 
 class Database(object):
     """A class in charge of the database queries"""
@@ -70,8 +72,8 @@ class Database(object):
         """
         sequence_info = dict()
         for table in tables:
-            #to initialize the sequence calls we need to call the
-            #nextval() once, later we will reset the previous value
+            # to initialize the sequence calls we need to call the
+            # nextval() once, later we will reset the previous value
             first_value = self.get_next_sequence_value(table)
 
             if options['auto']:
@@ -134,7 +136,7 @@ class Database(object):
         prev_val = self.get_current_sequence_value(table)
         next_val = self.get_next_sequence_value(table)
         increment = next_val - prev_val
-        self.set_current_sequence_value(table, prev_val)#reset the value
+        self.set_current_sequence_value(table, prev_val)  # reset the value
         return next_val, increment
 
     def get_largest_sequence_row_id(self, table, min_value, increment):

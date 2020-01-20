@@ -1,5 +1,7 @@
 django-postgresql-fix-sequences
 ===============================
+This update works on Django version 2.2 and Python 3.
+
 Fixes sequences in postgresql to help prevent the 
 duplicate primary key errors.
 
@@ -8,9 +10,11 @@ closed, so that there is no competition for the access to the sequences.
 
 Examples:
 
-    python manage.py postgres_fix_sequences --auto
-    python manage.py postgres_fix_sequences --minvalue 1 --increment 2
-    python manage.py postgres_fix_sequences --tables=auth_user --auto
+    python manage.py postgresql_fix_sequences --auto
+    python manage.py postgresql_fix_sequences --minvalue 1 --increment 2
+    python manage.py postgresql_fix_sequences --tables=auth_user --auto
+    
+*** --auto option needs to be tested, please use --tables for specific tables which works ***
 
 The fixes can be applied either to all tables that are part of a 
 django project, or to specifically selected tables, in which case

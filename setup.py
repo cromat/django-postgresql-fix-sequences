@@ -1,18 +1,19 @@
-import ez_setup
-ez_setup.use_setuptools()
+from ez_setup import use_setuptools
 from setuptools import setup, find_packages
 
+use_setuptools()
+
 setup(
-    name = "postgresql_sequence_utils",
-    version = '0.1',#remember to manually set this correctly
-    description = 'A django app with a management command that fixes sequences in Postgresql',
-    packages = find_packages(),
-    author = 'Evgeny.Fadeev',
-    author_email = 'evgeny.fadeev@gmail.com',
-    license = 'MIT',
-    keywords = 'postgresql, django, utility',
-    include_package_data = True,
-    classifiers = [
+    name="postgresql_sequence_utils",
+    version='0.1',  # remember to manually set this correctly
+    description='A django app with a management command that fixes sequences in Postgresql',
+    packages=find_packages(),
+    author='Evgeny.Fadeev',
+    author_email='evgeny.fadeev@gmail.com',
+    license='MIT',
+    keywords='postgresql, django, utility',
+    include_package_data=True,
+    classifiers=[
         'Environment :: Web Environment',
         'Framework :: Django',
         'Intended Audience :: Developers',
